@@ -5,4 +5,3 @@ build/
 .env.*.local
 .npm-cache/
 npm-debug.log*
-src_backup/
