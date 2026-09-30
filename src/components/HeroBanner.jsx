@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, IconButton, Typography } from '@mui/material';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
@@ -80,44 +80,89 @@ export default function HeroBanner({
         </span>
       </div>
 
-      {/* Interactive Spotlight Carousel controls */}
+      {/* Interactive Spotlight Carousel controls - perfectly aligned horizontal pill */}
       {spotlightList.length > 1 && (
         <Box
           sx={{
             position: 'absolute',
-            top: 24,
-            right: 28,
-            zIndex: 2,
-            display: 'flex',
+            top: { xs: 18, sm: 26 },
+            right: { xs: 18, sm: 30 },
+            zIndex: 3,
+            display: 'inline-flex',
+            flexDirection: 'row',
             alignItems: 'center',
-            gap: 1,
-            bgcolor: 'rgba(15, 16, 22, 0.75)',
-            backdropFilter: 'blur(8px)',
-            borderRadius: '20px',
-            px: 1.5,
+            justifyContent: 'center',
+            whiteSpace: 'nowrap',
+            bgcolor: 'rgba(15, 16, 22, 0.82)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '24px',
+            px: 1,
             py: 0.5,
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.14)',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
           }}
         >
-          <Button
+          <IconButton
             size="small"
             onClick={onPrev}
             aria-label="Previous spotlight film"
-            sx={{ minWidth: 26, width: 26, height: 26, p: 0, color: '#fff', '&:hover': { color: 'var(--accent)' } }}
+            sx={{
+              color: '#ffffff',
+              width: 28,
+              height: 28,
+              p: 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '&:hover': {
+                color: 'var(--accent)',
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+              },
+            }}
           >
-            <ArrowBackIosNewRoundedIcon sx={{ fontSize: 11 }} />
-          </Button>
-          <Typography sx={{ fontSize: '13px', fontWeight: 800, color: '#fff' }}>
-            0{spotlightIndex + 1} <span style={{ color: 'var(--muted)' }}>/</span> 0{spotlightList.length}
+            <ArrowBackIosNewRoundedIcon sx={{ fontSize: 12 }} />
+          </IconButton>
+
+          <Typography
+            component="span"
+            sx={{
+              fontSize: '13px',
+              fontWeight: 800,
+              color: '#ffffff',
+              px: 1.2,
+              letterSpacing: '1px',
+              userSelect: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.5,
+              lineHeight: 1,
+            }}
+          >
+            <span>0{spotlightIndex + 1}</span>
+            <span style={{ color: 'var(--muted)', opacity: 0.65, margin: '0 2px' }}>/</span>
+            <span>0{spotlightList.length}</span>
           </Typography>
-          <Button
+
+          <IconButton
             size="small"
             onClick={onNext}
             aria-label="Next spotlight film"
-            sx={{ minWidth: 26, width: 26, height: 26, p: 0, color: '#fff', '&:hover': { color: 'var(--accent)' } }}
+            sx={{
+              color: '#ffffff',
+              width: 28,
+              height: 28,
+              p: 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '&:hover': {
+                color: 'var(--accent)',
+                bgcolor: 'rgba(255, 255, 255, 0.08)',
+              },
+            }}
           >
-            <ArrowForwardIosRoundedIcon sx={{ fontSize: 11 }} />
-          </Button>
+            <ArrowForwardIosRoundedIcon sx={{ fontSize: 12 }} />
+          </IconButton>
         </Box>
       )}
     </section>
